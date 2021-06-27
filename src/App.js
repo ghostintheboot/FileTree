@@ -1,54 +1,68 @@
 import React, {useState} from 'react';
+import './App.css';
+
 
 
 function App() {
   return (
     <div>
-      <h1>File Gadget</h1>
+      <h1 className="header">File Gadget</h1>
       <Folder name="Music">
-        <File name="kitty.mp3" />
+        <File name="metalmix.mp3" />
         <File name="doom16.mp3" />
       </Folder>
       <Folder name="Pictures">
         <File name="kittycat.jpg" />
         <File name="doggo.jpg" />
-        <File name="yo_mama_lol.jpg" />
+        <File name="giantcrocodile.jpg" />
       </Folder>
-      <Folder name="Application">
+      <Folder name="GIFs">
+        <File name="gas_gas_gas.gif" />
+        <File name="wink_and_smile.gif" />
+        <File name="running_away.gif" />
+      </Folder>
+      <Folder name="Videos">
+        <File name="Git_Tutorial_-_18_-_Pushing_to_a_GitHub_Repository.mp4" />
+        <File name="Reviewing_Your_Code_-_#1.mp4" />
+        <File name="Colt's_Code_Camp_Day_2.mp4" />
+      </Folder>
+      <Folder name="Applications">
         <File name="VSCode.exe" />
         <File name="GooooogleChrome.exe" />
-        <File name="cryptoexchange.exe" />
+        <File name="fileconverter.exe" />
         <File name="GIMP.exe" />
       </Folder>
     </div>
-  )
+  );
 }
+
 
 
 function Folder(props) {
   const { name, children } = props;
   const [ isOpen, setIsOpen ] = useState(true);
 
-  const borderStyle = { border: '2px dashed blue' };
+  const borderStyle = { border: '1px dashed sienna' };
   const filePadding = { marginLeft: '24px' };
 
   const handleClick = () => setIsOpen(!isOpen);
   
   return (
     <div style={borderStyle}>
-      <h3>
+      <h3 className="subhead">
         <span onClick={handleClick}>
-          <i className="blue folder icon"></i>
-          <i className={isOpen ? "caret down icon" : "caret right icon"}></i>
-          {name}!
+          <i className="folder icon customIconColor"></i>
+          <i className={isOpen ? "caret down icon customIconColor" : "caret right icon customIconColor"}></i>
+          {name}
         </span>
       </h3>
-      <div style={filePadding}>
+      <div style={filePadding} className="pageText">
         {isOpen ? children : null}
       </div>
     </div>
-  )
+  );
 }
+
 
 
 function File(props) {
@@ -57,13 +71,16 @@ function File(props) {
   const fileIcons = {
     mp3: "music",
     jpg: "file image",
+    gif: "file video",
+    mp4: "video",
     exe: "code"
   }
 
   return (
-    <div><i className={`${fileIcons[fileExtension]} icon`}></i>{name}</div>
+    <div><i className={`${fileIcons[fileExtension]} icon customIconColor`}></i>{name}</div>
   );
 }
+
 
 
 export default App;
