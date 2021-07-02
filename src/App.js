@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import './App.css';
+import './App.scss';
 
 
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <h1 className="header">File Gadget</h1>
       <Folder name="Music">
         <File name="metalmix.mp3" />
@@ -30,7 +30,7 @@ function App() {
         <File name="VSCode.exe" />
         <File name="GooooogleChrome.exe" />
         <File name="fileconverter.exe" />
-        <File name="GIMP.exe" />
+        <File name="paint.exe" />
       </Folder>
     </div>
   );
